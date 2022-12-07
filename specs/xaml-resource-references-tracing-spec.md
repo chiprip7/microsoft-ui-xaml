@@ -15,8 +15,8 @@ at run-time.
 
 Unfortunately, the stowed exception message is the *only* information provided about the error, 
 which makes it difficult or, more often, outright impossible to debug. This spec describes a new 
-API on the `DebugSettings` API developers can use to access more detailed information about the 
-resource reference lookup failure.
+API on the `DebugSettings` class that developers can use to access more detailed information about 
+the resource reference lookup failure.
 
 # API Pages
 
@@ -26,8 +26,8 @@ _(Each of the following L2 sections correspond to a page that will be on docs.mi
 
 Occurs when a [XAML resource reference](https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-resource-dictionary) cannot be resolved.
 
-_Spec note: is there a version of the 'ResourceDictionary and XAML resource references' that links
-to the Windows App SDK documentation for relevant APIs?_
+_Spec note: is there a version of the 'ResourceDictionary and XAML resource references' article that 
+links to the Windows App SDK documentation for relevant APIs?_
 
 ```c#
 public event TypedEventHandler<DebugSettings,XamlResourceReferenceFailedEventArgs> 
@@ -90,7 +90,10 @@ perhaps the `ResourceDictionary` it is contained in was not in the list of searc
 `ResourceDictionary`s, or perhaps that `ResourceDictionary` was searched which could indicate that 
 an incorrect resource key was specified.
 
-Below is an example message from the WinUI Gallery sample app. 
+Below is an example message from the WinUI Gallery sample app after an incorrect resource reference
+(`OutputTextBlockStyl` rather than `OutputTextBlockStyle`) was deliberately inserted. If you know
+that the desired resource is defined in `App.xaml`, then the failure to locate it in there is a
+strong indicator of an erroneous reference.
 
 ```
 Beginning search for resource with key 'OutputTextBlockStyl'.
